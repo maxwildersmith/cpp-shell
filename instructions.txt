@@ -1,1 +1,7 @@
 To compile and build the program, run 'make', to run as well as compile, run 'make run'
+
+
+
+
+In the tests folder there are 2 cpp files and their executables. The executable 'extest' can be run with ./extest to test that executables work.
+To test that piping works, the command extest | pipetest will test if 'pipetest' was able to receive the output from extest.

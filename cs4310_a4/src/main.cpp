@@ -21,7 +21,11 @@ int main(){
         getline(cin,input);
         
         int spacePos = input.find(' ');
-        if( input.compare(0, spacePos, "cd") == 0 )
+        if (input.find(" | ") != string::npos)
+        {
+            cout << piping(input) << endl;
+        }
+        else if( input.compare(0, spacePos, "cd") == 0 )
         {
             cout << cd(input) << endl;
 

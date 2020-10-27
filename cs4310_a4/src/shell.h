@@ -6,6 +6,7 @@
 #include<iostream>
 #include<unistd.h>
 #include<filesystem>
+#include<sys/wait.h>
 
 using namespace std;
 
@@ -26,5 +27,7 @@ string rmdir(string input);
 string execute(string input);
 
 string rm(string input);
+
+string piping(string input);
 
 #endif
