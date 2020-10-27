@@ -1,1 +1,3 @@
-For this project I implemented the basic methods for cd, pwd, mkdir, rmdir, ls, cp, and exit. They function but did not handle edge cases and bad input from the user.
+For this project I implemented the basic methods for cd, pwd, mkdir, rmdir, ls, rm, cp, and exit.
+I also wrote the test cases and managed the makefile creation. 
+I also wrote portions of the report based on the parts of the shell I wrote.

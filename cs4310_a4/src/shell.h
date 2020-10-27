@@ -22,7 +22,7 @@ string cp(string input);
 
 string mkdir(string input);
 
-string rmdir(string input);
+string rdir(string input);
 
 string execute(string input);
 

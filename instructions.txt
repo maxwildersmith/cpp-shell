@@ -1,7 +1,9 @@
-To compile and build the program, run 'make', to run as well as compile, run 'make run'
+There are a collection of make commands:
+    'make all' or 'make'    -  Builds all output files, runs the test executable, then runs the shell program.
+    'make run'              -  Builds and runs the shell program.
+    'make test'             -  Builds and runs the test program.
+    'make build'            -  Builds all of the executables, doesn't run anything.
 
+After building, run 'main.out' to run the shell, or 'test.out' to run the test cases.
 
-
-
-In the tests folder there are 2 cpp files and their executables. The executable 'extest' can be run with ./extest to test that executables work.
-To test that piping works, the command extest | pipetest will test if 'pipetest' was able to receive the output from extest.
+To test piping, run './extest | pipetest' to pipe the output from extest into pipetest.

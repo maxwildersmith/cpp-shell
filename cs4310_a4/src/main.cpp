@@ -1,7 +1,5 @@
 #include "shell.h"
 
-using namespace std;
-
 bool valid_path(string path){
     return filesystem::exists(path);
 }
@@ -14,58 +12,61 @@ int main(){
 
     string promptStr = get_prompt_string();
 
-    string input;
+    string input, output;
 
     do{
+        output = "";
         cout << promptStr << cwd << "$ ";
         getline(cin,input);
         
         int spacePos = input.find(' ');
-        if (input.find(" | ") != string::npos)
-        {
-            cout << piping(input) << endl;
+        try{
+            if (input.find(" | ") != string::npos)
+            {
+                output = piping(input);
+            }
+            else if( input.compare(0, spacePos, "cd") == 0 )
+            {
+                output = cd(input.substr(3));
+
+            } else if( input.compare(0, spacePos, "pwd") == 0 )
+            {
+                output = cwd;
+
+            } else if( input.compare(0, spacePos, "rm") == 0 )
+            {
+                output = rm(input.substr(3));
+
+            } else if( input.compare(0, spacePos, "mkdir") == 0 )
+            {
+                output = mkdir(input.substr(6));
+
+            } else if( input.compare(0, spacePos, "rmdir") == 0 )
+            {
+            output = rdir(input.substr(6));
+
+            } else if( input.compare(0, spacePos, "ls") == 0 )
+            {
+                output = ls(input);
+
+            } else if( input.compare(0, spacePos, "cp") == 0 )
+            {
+                output = cp(input.substr(3));
+
+            } else if( input.find("./") == 0) 
+            {
+                output = execute(input.substr(2));
+            
+            } else if( input.compare("exit") != 0)
+            {
+                output = "Command '" + input + "' not found.";
+            }
+        } catch (...) {
+            output = "Incorrect usage of the command, check the number of arguments.";
         }
-        else if( input.compare(0, spacePos, "cd") == 0 )
-        {
-            cout << cd(input) << endl;
 
-        } else if( input.compare(0, spacePos, "pwd") == 0 )
-        {
-            cout << cwd << endl;
+        if(output.length() > 0)
+            cout << output << endl;
 
-        } else if( input.compare(0, spacePos, "rm") == 0 )
-        {
-            cout << rm(input.substr(3)) << endl;
-
-        } else if( input.compare(0, spacePos, "mkdir") == 0 )
-        {
-            
-            cout << mkdir(input.substr(6)) << endl;
-
-        } else if( input.compare(0, spacePos, "rmdir") == 0 )
-        {
-            
-            cout << rmdir(input.substr(6)) << endl;
-
-        } else if( input.compare(0, spacePos, "ls") == 0 )
-        {
-            
-            cout << ls(input) << endl;
-
-        } else if( input.compare(0, spacePos, "cp") == 0 )
-        {
-
-            cout << cp(input) << endl;
-
-        } else if( input.find("./") == 0) 
-        {
-            
-            cout << execute(input.substr(2)) << endl;
-        
-        } else if( input.compare("exit") != 0)
-        {
-
-            cout << "Command '" << input << "' not found." << endl;
-        }
     } while (input.compare("exit") != 0);
 }

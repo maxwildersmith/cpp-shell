@@ -1,0 +1,2 @@
+https://www.cs.bu.edu/teaching/cpp/writing-makefiles/
+https://en.cppreference.com/w/cpp/filesystem
