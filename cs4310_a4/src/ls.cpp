@@ -1,9 +1,5 @@
 #include "shell.h"
 
-/**
- * Error checking in case theres a another path
- */
-
 string entry_to_filename(filesystem::directory_entry entry){
     string name = entry.path().filename().string();
     if(name.find(' ') != string::npos)
@@ -18,6 +14,8 @@ string ls(string input){
     string output = "";
     if(input.length() > 3){
         path = input.substr(3);
+        if (filesystem::exists(path) == 0)
+            return "Invalid file path";
     }
 
     for( auto& entry: filesystem::directory_iterator(path))
